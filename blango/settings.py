@@ -48,6 +48,7 @@ class Dev(Configuration):
         'crispy_bootstrap5',
         'rest_framework',
         'rest_framework.authtoken',
+        'drf_yasg',
         'debug_toolbar',
         'blango_auth',
         'blog',
@@ -57,6 +58,13 @@ class Dev(Configuration):
         'allauth.socialaccount.providers.google',
     ]
 
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
+    
     SITE_ID = 1
     ACCOUNT_USER_MODEL_USERNAME_FIELD = None
     ACCOUNT_EMAIL_REQUIRED = True
